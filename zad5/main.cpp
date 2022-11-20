@@ -15,7 +15,6 @@ template<class T> class Container
         int getElementsAmt() {return elementCounter_;};
         void addToContainer(T toAdd);
         void removeFromContainer(int idx);
-        void printContainer();
         void sortContainer();
         void dispAllData();
         
@@ -34,10 +33,6 @@ template<class T> void Container<T>::addToContainer(T toAdd)
         objectArray_[elementCounter_] = toAdd;
         elementCounter_++;
     }
-    else
-    {
-        std::cout << "Container is full" << std::endl;
-    }
 }
 
 template<class T> void Container<T>::removeFromContainer(int idx)
@@ -51,13 +46,6 @@ template<class T> void Container<T>::removeFromContainer(int idx)
     
 }
 
-template<class T> void Container<T>::printContainer()
-{
-    for (int i = 0; i < elementCounter_; i++)
-    {
-        std::cout << objectArray_[i].getName() << std::endl;
-    }
-}
 
 template<class T> void Container<T>::sortContainer()
 {
@@ -259,9 +247,6 @@ int main()
     Container<Animal> animalContainer;
     Container<Building> buildingContainer;
 
-
-
-
     Animal a[4];
     for (int i = 0; i < 4; i++)
     {
@@ -287,6 +272,5 @@ int main()
 
     animalContainer.dispAllData();
     buildingContainer.dispAllData();
-    
 
 }
