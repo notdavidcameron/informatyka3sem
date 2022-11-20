@@ -12,18 +12,20 @@ template<class T> class Container
         T object_;
         Container() : elementCounter_(0) {}
         
-
+        int getElementsAmt() {return elementCounter_;};
         void addToContainer(T toAdd);
-        void removeFromContainer(T toRemove);
+        void removeFromContainer(int idx);
         void printContainer();
         void sortContainer();
         void dispAllData();
+        
         
     private:
         T objectArray_[6];
         int elementCounter_;
 
 };
+
 
 template<class T> void Container<T>::addToContainer(T toAdd)
 {
@@ -38,17 +40,15 @@ template<class T> void Container<T>::addToContainer(T toAdd)
     }
 }
 
-template<class T> void Container<T>::removeFromContainer(T toRemove)
+template<class T> void Container<T>::removeFromContainer(int idx)
 {
-    for (int i = 0; i < elementCounter_; i++)
+
+    if (idx < elementCounter_)
     {
-        if (objectArray_[i] == toRemove)
-        {
-            objectArray_[i] = objectArray_[elementCounter_ - 1];
-            elementCounter_--;
-            break;
-        }
+        objectArray_[idx] = objectArray_[elementCounter_-1];
+        elementCounter_--;
     }
+    
 }
 
 template<class T> void Container<T>::printContainer()
@@ -167,10 +167,8 @@ float inputInt()
 class Animal
 {
     public:
-        Animal()
-        {
-            weight_ = -1;
-        }
+        Animal() = default;
+        
         Animal(string name, float weight, int birthYear, string id)
             : name_(name), weight_(weight), birthYear_(birthYear), id_(id)
             {}
@@ -225,10 +223,8 @@ class Animal
 class Building
 {
     public:
-        Building()
-        {
-            buildingHeight_ = -1;
-        }
+        Building() = default;
+    
         Building(string name, float gpsX, float gpsY, float buildingHeight)
             : name_(name), gpsX_(gpsX), gpsY_(gpsY), buildingHeight_(buildingHeight)
             {}
@@ -293,6 +289,41 @@ int main()
     Container<Animal> animalContainer;
     Container<Building> buildingContainer;
 
+    // Animal animal1("Stefan", 12.5, 1998, "123456789");
+    // Animal animal2("Grzegorz", 12.5, 1998, "123456789");
+    // Building building1("Super", 12.5, 12.5, 300);
+    // Building building2("wyjątkowy", 12.5, 12.5, 300);
+    // animalContainer.addToContainer(animal1);
+
+    // animalContainer.printContainer();
+
+    // cout << "--------------------------------" << endl;
+
+    // animalContainer.addToContainer(animal2);
+
+    // animalContainer.printContainer();
+
+    // cout << "--------------------------------" << endl;
+
+    // animalContainer.removeFromContainer(animal1);
+
+    // animalContainer.printContainer();
+
+    // cout << "-----------------BUDYNKI:---------------" << endl;
+
+    // buildingContainer.addToContainer(building1);
+    // buildingContainer.printContainer();
+
+    // cout<<"--------------------------------"<<endl;
+
+    // buildingContainer.addToContainer(building2);
+    // buildingContainer.printContainer();
+
+    // cout<<"--------------------------------"<<endl;
+
+    // buildingContainer.removeFromContainer(building1);
+    // buildingContainer.printContainer();
+
 
 
     Animal a[4];
@@ -311,7 +342,9 @@ int main()
 
     int idx;
     cin >> idx;
-    animalContainer.removeFromContainer(a[idx]);
+    
+    
+    animalContainer.removeFromContainer(idx);
 
     animalContainer.sortContainer();
     buildingContainer.sortContainer();
