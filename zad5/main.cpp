@@ -34,6 +34,10 @@ template<class T> void Container<T>::addToContainer(T toAdd)
         objectArray_[elementCounter_] = toAdd;
         elementCounter_++;
     }
+    else
+    {
+        std::cout << "Container is full" << std::endl;
+    }
 }
 
 template<class T> void Container<T>::removeFromContainer(int idx)
@@ -66,18 +70,6 @@ template<class T> void Container<T>::dispAllData()
     {
         std::cout << objectArray_[i] << " ";
     }
-}
-
-bool containsSpace(string toCheck)
-{
-    for (int i = 0; i < toCheck.length(); i++)
-    {
-        if (toCheck[i] == ' ')
-        {
-            return true;
-        }
-    }
-    return false;
 }
 
 float inputFloat()
@@ -140,24 +132,6 @@ float inputInt()
 
 
 
-/* string inputString()
-{
-   string input;
-    bool warunek = true;
-    while(warunek)
-    {
-        getline(cin, input);
-        if(!containsSpace(input))
-        {
-            warunek = false;
-        }
-        else
-        {
-            std::cout << "fail = " << input << std::endl;
-        }
-    }
-    return input;
-}*/
 
 
 class Animal
@@ -284,6 +258,8 @@ int main()
 {
     Container<Animal> animalContainer;
     Container<Building> buildingContainer;
+
+
 
 
     Animal a[4];
