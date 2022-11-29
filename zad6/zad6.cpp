@@ -176,6 +176,21 @@ int main()
             int inputColumn;
             cin >> inputRow >> inputColumn;
             array[inputRow][inputColumn]->print();
+            
+            //zwolnij pamięć
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    delete array[i][j];
+                }
+            }
+            for (int i = 0; i < rows; i++)
+            {
+                delete[] array[i];
+            }
+            
+            delete[] array;
             break;
         }
     }
