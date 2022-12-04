@@ -87,8 +87,9 @@ template <class T> void List <T> :: add(T value) {
 }
 
 template <class T> void List <T> :: addOrder(T value) {
+    // first = new Link <T>(value, first);
     Iterator<T> itr(*this);
-    for (itr.init(); !itr; ++itr) 
+    for (itr.init(); !itr; itr++) 
     {
         if (value.getSum() < itr().getSum()) {
             itr.addBefore(value);
@@ -109,6 +110,21 @@ template <class T> void List <T> :: addOrder(T value) {
     }
      itr.addBefore(value);
 }
+
+// template <class T> void List <T> :: addOrder(T value) 
+// {
+//     Iterator<T> itr(*this);
+//     for (itr.init(); !itr; itr++)
+//     {
+//         if (value.getSum() > itr().getSum())
+//         {
+//             std::cout << "tees" << std::endl;
+//             itr.addBefore(value);
+//             return;
+//         }
+//     }
+//     itr.addBefore(value);
+// }
 
 
 template <class T> T List <T> :: firstElement() const {
@@ -248,7 +264,6 @@ int main()
 {
     List <Point> list;
 
-
     int n = 0;
     cin >> n;
     for (int i = 0; i < n; i++) 
@@ -271,13 +286,13 @@ int main()
 
     double sum = 0;
     cin >> sum;
-    for (it.init(); !it; ++it) {
+    for (it.init(); !it; it++) {
         if (it().getSum() == sum) {
             it.removeCurrent();
         }
     }
 
-    for(it.init(); !it; ++it) {
+    for(it.init(); !it; it++) {
         cout << it() << " ";
     }
 
