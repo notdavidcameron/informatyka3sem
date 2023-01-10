@@ -29,8 +29,8 @@ class List
             }
             else
             {
-                last->next = newLink;
-                last = newLink;
+                newLink->next = first;
+                first = newLink;
             }
         }
 
